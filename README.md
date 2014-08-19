@@ -23,14 +23,32 @@ var spawn = require('spawn-handler');
 
 #### spawn.run(command, [args], [options])
 
-Shortcut of `require('child_process').spawn(command, [args], [options])`.
+Shortcut of 
+
+```js
+var spawn = require('child_process').spawn;
+
+spawn(command, [args], [options]);
+```
 
 Launches a new process (spawn) with the given `command`.
 
 See the [Node.js doc (spawn)](http://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) for more details.
 
 ```js
-spawn.run('any-command');
+var ls = spawn.run('ls', ['-lh', '/usr']);
+
+ls.stdout.on('data', function (data) {
+  console.log('stdout: ' + data);
+});
+
+ls.stderr.on('data', function (data) {
+  console.log('stderr: ' + data);
+});
+
+ls.on('close', function (code) {
+  console.log('child process exited with code ' + code);
+});
 ```
 
 
@@ -44,7 +62,11 @@ var ls = spawn.handle(spawn.run('ls', ['./']), function(code) {
 }, 'List current directory');
 
 ls.stdout.on('data', function(data) {
-  console.log('files: ', data.toString());
+  console.log('files: ' + data);
+});
+
+ls.stderr.on('data', function (data) {
+  console.log('stderr: ' + data);
 });
 ```
 
