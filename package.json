@@ -1,6 +1,6 @@
 {
   "name": "spawn-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple handler for ChildProcess.spawn, it handles a child process spawned, then executes a callback when the process exits (optional).",
   "main": "src/index.js",
   "keywords": [
