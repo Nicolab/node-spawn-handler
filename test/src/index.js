@@ -8,8 +8,8 @@
 
 'use strict';
 
-var test         = require('unit.js');
-var spawn        = require('../../src/index');
+var test  = require('unit.js');
+var spawn = require('../../src/index');
 
 
 describe('spawn-handler', function() {
